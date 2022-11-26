@@ -9,28 +9,22 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-md-auto gap-2">
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill me-2"></i>Home</a>
+                    <router-link class="nav-link" to="/">Home</router-link>
+                    <!-- <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill me-2"></i>Home</a> -->
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link" href="Student_login"><i class="bi bi-people-fill me-2"></i>Student Login</a>
+                    <router-link class="nav-link" to="Student_login">Student Login</router-link>
+                    <!-- <a class="nav-link" href="Student_login"><i class="bi bi-people-fill me-2"></i>Student Login</a> -->
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link" href="Admin_Login"><i class="bi bi-telephone-fill me-2"></i>Admin Login</a>
+                    <router-link class="nav-link" to="Admin_Login">Admin Login</router-link>
+                    <!-- <a class="nav-link" href="Admin_Login"><i class="bi bi-telephone-fill me-2"></i>Admin Login</a> -->
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link" href="Admin_registration"><i class="bi bi-telephone-fill me-2"></i>Admin Registeration</a>
+                    <router-link class="nav-link" to="Admin_registration">Admin Registeration</router-link>
+                    <!-- <a class="nav-link" href="Admin_registration"><i class="bi bi-telephone-fill me-2"></i>Admin Registeration</a> -->
                   </li>
-                  <!-- <li class="nav-item dropdown rounded">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-fill me-2"></i>Profile</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Account</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                  </li> -->
+                 
                 </ul>
               </div>
             </div>

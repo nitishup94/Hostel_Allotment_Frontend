@@ -5,6 +5,7 @@
         <div class="row" style="margin-bottom:15px;">
             <div class="col"><h2 style="text-align:center;color:blue">Allotment Setting</h2></div>
         </div>
+        <form class="card-form" id="form"  @submit.prevent="update()">
         <div class="row">
           <div class="col">
             <label for="norooms"><b>Number of Rooms</b></label>
@@ -19,7 +20,7 @@
             <div class="col" style="margin-top:35px;">
                 <label for="preference"><b>Allotment Preference : </b></label>
                 <select  id="preference" v-model="pref">
-                    <option value="1">According Fee Submit date</option>
+                    <option value="1">Random Allotment</option>
                 </select>
             </div>
         </div>
@@ -29,7 +30,7 @@
            <div class="action" style="width:40%;">
             <button class="action-button">Save</button>
           </div></center>
-        </div>
+        </div></form>
     </div>
       
 
@@ -38,18 +39,54 @@
     </div>
 </template>
 <script>
+import axios from  'axios'
+
 export default {
     name:'AllotmentSetting',
     data(){
         return{
-            norooms:'100',
-            nostudent:'4',
-            pref:'1'
+            norooms:0,
+            nostudent:0,
+            pref:1
         }
     },
+    async mounted() {
+     //fetch data for setting
+      const adminconfig = {
+        headers: {
+          "Content-Type": "application/json",
+        }, 
+      };
+      await axios.get(`http://localhost:4040/api/admin/fetchsetting/${this.$route.params.id}`,adminconfig)
+        .then((response)=>{
+      
+          this.norooms=response.data[0].rooms;
+          this.nostudent=response.data[0].noofstudent;
+          this.pref=response.data[0].prefstudent;
+        
+        }).catch((err)=>{
+          console.log(err);
+        });
+    },
+    
     methods:{
-      login(){
-        this.$router.push('/student')
+     async update(){
+      
+       await axios.put(`http://localhost:4040/api/admin/updatesetting/${this.$route.params.id}`,{
+        rooms:this.norooms,
+        noofstudent: this.nostudent,
+        pref:  this.pref
+       })
+        .then(()=>{
+          // console.log(response.data)
+          alert('Settings have been updated successfully !')
+        }).catch((err)=>{
+           console.log(err)
+        })
+          
+
+
+
       }
     }
 }

@@ -15,6 +15,7 @@ import AdminDashboard from './components/admin/AdminDashboard.vue'
 import AdminView from './components/admin/AdminView.vue'
 import AdminUpload from './components/admin/AdminUpload.vue'
 import AllotmentSetting from './components/admin/AllotmentSetting.vue'
+import AllotmentStart from './components/admin/AllotmentStart.vue'
 
 
 
@@ -27,10 +28,11 @@ export default [ {path:'/',component:HomeView,children:[
     {path:'/student',component:StudentCommon, children: [
         {path: '', component:StudentInfo,meta:{auth:true }}
     ]},
-    {path:'/admin',component:AdminView, children: [
+    {path:'/admin/:id',component:AdminView, children: [
         {path: '', component:AdminDashboard,meta:{adminauth:true }},
         {path: 'upload_data', component:AdminUpload ,meta:{adminauth:true }},
         {path: 'allotment_setting', component:AllotmentSetting,meta:{adminauth:true }},
+        {path: 'allotment_start', component:AllotmentStart,meta:{adminauth:true }},
 
 
     ]}]

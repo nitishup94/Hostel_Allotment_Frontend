@@ -9,16 +9,17 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-md-auto gap-2">
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/admin"><i class="bi bi-house-fill me-2"></i>Admin Dashboard</a>
+                    <router-link class="nav-link active" v-bind:to="home">Admin Dashboard</router-link>
+                  
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/admin/allotment_setting"><i class="bi bi-house-fill me-2"></i>Allotment Settings</a>
+                    <router-link class="nav-link" v-bind:to="allotment_setting">Allotment Settings</router-link>
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/admin/upload_data"><i class="bi bi-house-fill me-2"></i>Upload Data</a>
+                    <router-link class="nav-link" v-bind:to="upload_data">Upload Data</router-link>
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill me-2"></i>Start Allotment</a>
+                    <router-link class="nav-link" v-bind:to="allotment_start">Start Allotment</router-link>
                   </li>
                   <li class="nav-item rounded">
                     <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill me-2"></i>Generate Report</a>
@@ -39,6 +40,15 @@
 <script>
 export default {
     name:'AdminNav',
+    data(){
+      return{
+        home:`/admin/${this.$route.params.id}`,
+        allotment_setting:`/admin/${this.$route.params.id}/allotment_setting`,
+        upload_data:`/admin/${this.$route.params.id}/upload_data`,
+        allotment_start:`/admin/${this.$route.params.id}/allotment_start`,
+        
+      }
+    },
 methods:{
   logout(){
     localStorage.removeItem("admin_status");

@@ -45,23 +45,7 @@ if(to.meta.adminauth){
 
 })
 
-// router.beforeEach((to, from, next) => {
-//   if (
-//       'auth' in to.meta &&
-//       to.meta.auth &&
-//       !store.getters[`auth/${IS_USER_AUTHENTICATE_GETTER}`]
-//   ) {
-//       next('/Student_login');
-//   } else if (
-//       'auth' in to.meta &&
-//       !to.meta.auth &&
-//       store.getters[`auth/${IS_USER_AUTHENTICATE_GETTER}`]
-//   ) {
-//       next('/student');
-//   } else {
-//       next();
-//   }
-// });
+
 new Vue({
   router:router,
   render: h => h(App),

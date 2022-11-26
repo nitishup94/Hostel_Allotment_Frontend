@@ -21,12 +21,12 @@
                       <label id="err_mobile" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field" v-model="admin_register.clgname" id="dob" required/>
+              <input type="text" class="input-field" v-model="admin_register.college"  required/>
               <label class="input-label">College Name</label>
                       <label id="err_clgname" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field" v-model="admin_register.pass" id="pass" required/>
+              <input type="text" class="input-field" v-model="admin_register.password" id="pass" required/>
               <label class="input-label">Password</label>
                       <label id="err_pass" style="display: none;"></label>
             </div>
@@ -51,12 +51,19 @@ export default {
     },
     methods:{
     async  Reg_data(){
-     await axios.post('https://vue-router-36087-default-rtdb.firebaseio.com/posts.json',this.admin_register)
-        .then((response)=>{
-
-console.log(response,this.admin_register);
+     await axios.post('http://localhost:4040/api/admin',this.admin_register)
+        .then(()=>{
+         //success alert
+         alert('Your registration has been successfully done !');
+         this.$router.push('/Admin_Login')
+          
         }).catch((err)=>{
-          console.log(err)
+       const isDuplicate= err.response.data.errmsg.keyPattern.email;
+       if(isDuplicate){
+        alert('Email is already exist!')
+       }else{
+        alert(err.message);
+       }
         })
 //for reset input after submit
 const form = document.getElementById('form');
@@ -84,7 +91,7 @@ input {
   max-width: 425px;
   background-color: #fff;
   border-radius: 10px;
-  background-image: linear-gradient(to right top, #052737, #004e5e, #007769, #009e54, #8ebe22);
+ background: linear-gradient(to right, #6a7a89, #bdc3c7);
   box-shadow: 0 10px 20px 0 rgba(153, 153, 153, .25);
   padding: 0.75rem;
 }
@@ -145,13 +152,19 @@ input {
 .action-button {
   font: inherit;
   font-size: 1.25rem;
+  letter-spacing: 2px;
   padding: 1em;
   width: 100%;
-  font-weight: 500;
-  background-color: #6658d3;
+  font-weight: 700;
+  background: linear-gradient(to right, #92a2a6, #E6DADA);
+ 
   border-radius: 6px;
   color: #fff;
   border: 0;
+}
+.action-button:hover{
+  border:2px solid white;
+  box-shadow: 0 5px 10px 0 rgba(219, 209, 209, 0.552);
 }
 .action-button:focus {
   outline: 0;

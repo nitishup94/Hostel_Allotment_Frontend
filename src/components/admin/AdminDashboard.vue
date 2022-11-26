@@ -3,7 +3,11 @@
        
       <div class="container">
         <div class="row" style="margin-bottom:15px;">
-          <div class="col"><h2 style="text-align:center;color:blue">Student Data Format</h2></div>
+          <div class="col">
+
+            <h2 style="text-align:center;color:blue;font-size:25px">Hello {{name}} ,Welecome to the Dashboard ! </h2>
+          
+          </div>
       </div>
         <div class="text-center" style="margin-top:75px;">
           <center>
@@ -21,11 +25,21 @@
 <script>
 export default {
     name:'AdminDashboard',
-    methods:{
-      login(){
-        this.$router.push('/student')
+    data(){
+      return{
+        userid:this.$route.params.id,
+
+        //store data in localstorage
+        clgname:localStorage.getItem("admin_college"),
+        name:localStorage.getItem("admin_name"),
       }
+    },
+    methods:{
+
+
+
     }
+   
 }
 </script>
 <style scoped>

@@ -7,12 +7,12 @@
           <form class="card-form" id="form"  @submit.prevent="Admin_login()">
             
                   <div class="input">
-              <input type="text" class="input-field" v-model="email" id="email" required/>
+              <input type="text" class="input-field" v-model="admin_reg_data.email" id="email" required/>
               <label class="input-label">Email</label>
                       <label id="err_email" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field" v-model="pass"  id="pass" required/>
+              <input type="password" class="input-field" v-model="admin_reg_data.password"  id="pass" required/>
               <label class="input-label">Password</label>
                       <label id="err_password" style="display: none;"></label>
             </div>
@@ -34,26 +34,49 @@ export default {
     name:'AdminLogin',
     data(){
         return{
-          email:'',
-          pass:' '
+          admin_reg_data:{}
         }
       } ,
     methods:{
      async Admin_login(){
-        await axios.get('https://vue-router-36087-default-rtdb.firebaseio.com/posts.json',{
-      email:this.email,
-      pass:this.pass
-        })
+      const adminconfig = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+       await axios.get(`http://localhost:4040/api/admin/login/${this.admin_reg_data.email}`,adminconfig)
         .then((response)=>{
-           console.log(response.data);
+          
+          //password validate
+           if(response.data[0].password==this.admin_reg_data.password){
+
+           console.log("logged in successfully!");
+
+           //set login status and set value in localstorage for display data
+           localStorage.setItem("admin_status",true);
+           localStorage.setItem("admin_name",response.data[0].name);
+           localStorage.setItem("admin_college",response.data[0].college);
+           
+
+           //goto the dashboard
+           this.$router.push('/admin/'+response.data[0]._id)
+           }else{
+
+            //for reset input after wrong attempt
+            const form = document.getElementById('form');
+            form.reset();
+            alert("Incorrect password !")
+           }
+
+
         }).catch((err)=>{
+          alert("Incorrect Email !");
+          const form = document.getElementById('form');
+          form.reset();
           console.log(err)
         })
-//for reset input after submit
-if(this.pass.length>5){
-  localStorage.setItem("admin_status",true);
-  this.$router.push('/admin')
-}
+
+
        
       }
     }
