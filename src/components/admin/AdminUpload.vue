@@ -66,10 +66,10 @@ export default {
           }
           )
         .then((res)=>{
-          console.log(res.data)
+         
           if(this.items.length-1==i){
 
-          alert("Successfully  student data Saved")
+          alert("Successfully students data Saved")
           //reset form
           const form = document.getElementById('form');
           form.reset();
