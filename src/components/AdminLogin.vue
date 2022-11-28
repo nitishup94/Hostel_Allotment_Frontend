@@ -7,7 +7,7 @@
           <form class="card-form" id="form"  @submit.prevent="Admin_login()">
             
                   <div class="input">
-              <input type="text" class="input-field" v-model="admin_reg_data.email" id="email" required/>
+              <input type="email" class="input-field" v-model="admin_reg_data.email" id="email" required/>
               <label class="input-label">Email</label>
                       <label id="err_email" style="display: none;"></label>
             </div>
@@ -44,7 +44,7 @@ export default {
           "Content-Type": "application/json",
         },
       };
-       await axios.get(`http://localhost:4040/api/admin/login/${this.admin_reg_data.email}`,adminconfig)
+       await axios.get(`api/admin/login/${this.admin_reg_data.email}`,adminconfig)
         .then((response)=>{
           
           //password validate

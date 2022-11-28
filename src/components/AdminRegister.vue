@@ -6,27 +6,27 @@
        <h2 style="color:white;text-align:center;letter-spacing:1px">Admin Registration</h2>
           <form class="card-form" id="form"  @submit.prevent="Reg_data()">
             <div class="input">
-              <input type="text" class="input-field"  v-model="admin_register.name" id="name" required/>
+              <input type="text" class="input-field"  v-model="admin_register.name" id="name"  autocomplete="off" required/>
               <label class="input-label">Full Name</label>
                       <label id="err_name" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field"  v-model="admin_register.email" id="email" required/>
+              <input type="text" class="input-field"  v-model="admin_register.email" id="email" autocomplete="off" required/>
               <label class="input-label">Email</label>
                       <label id="err_email" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field" v-model="admin_register.mobile" id="mobile" required/>
+              <input type="text" class="input-field" v-model="admin_register.mobile" id="mobile" autocomplete="off" required/>
               <label class="input-label">Mobile No</label>
                       <label id="err_mobile" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field" v-model="admin_register.college"  required/>
+              <input type="text" class="input-field" v-model="admin_register.college" autocomplete="off" required/>
               <label class="input-label">College Name</label>
                       <label id="err_clgname" style="display: none;"></label>
             </div>
                   <div class="input">
-              <input type="text" class="input-field" v-model="admin_register.password" id="pass" required/>
+              <input type="password" class="input-field" v-model="admin_register.password" id="pass" autocomplete="off" required/>
               <label class="input-label">Password</label>
                       <label id="err_pass" style="display: none;"></label>
             </div>
@@ -45,14 +45,99 @@ export default {
     name:'AdminRegister',
     data(){
         return{
-           
+            registerflag:false,
             admin_register:{}
         }
     },
     methods:{
+      validate_data(){
+    //name validation
+var  name=document.getElementById("name").value;
+var name_ptrn=/^[A-Za-z ]+$/gi;
+if(name_ptrn.test(name)){
+    let name_err=document.getElementById("err_name")
+name_err.style.display = "block";
+name_err.style.color = "yellow";
+name_err.innerHTML="Done! You have entered a valid name.";
+   
+}else{
+let name_err=document.getElementById("err_name")
+name_err.style.display = "block";
+name_err.style.color = "red";
+name_err.innerHTML="Please Sir enter a valid name !";
+   return false;
+}
+
+ //email validation
+ var  email=document.getElementById("email").value;
+var email_ptrn=/^[A-z0-9._]{3,}@[A-z]{3,5}.[A-z]{3,5}$/gi;
+if(email_ptrn.test(email)){
+    let email_err=document.getElementById("err_email")
+email_err.style.display = "block";
+email_err.style.color = "yellow";
+email_err.innerHTML="Done! You have entered a valid email.";
+  
+}else{
+let email_err=document.getElementById("err_email")
+email_err.style.display = "block";
+email_err.style.color = "red";
+email_err.innerHTML="Please Sir enter a valid email !";
+   return false;
+}
+
+
+ //mobile validation
+ var  mobile=document.getElementById("mobile").value;
+var mobile_ptrn=/^[0-9]{10,10}$/g;
+if(mobile_ptrn.test(mobile)){
+    let mobile_err=document.getElementById("err_mobile")
+mobile_err.style.display = "block";
+mobile_err.style.color = "yellow";
+mobile_err.innerHTML="Done! You have entered a valid mobile no.";
+
+}else{
+let mobile_err=document.getElementById("err_mobile")
+mobile_err.style.display = "block";
+mobile_err.style.color = "red";
+mobile_err.innerHTML="Please Sir enter a valid mobile no.!";
+   return false;
+}
+
+ //password validation
+ var  pass=document.getElementById("pass").value;
+var pass_ptrn=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+if(pass_ptrn.test(pass)){
+    let pass_err=document.getElementById("err_pass")
+pass_err.style.display = "block";
+pass_err.style.color = "yellow";
+pass_err.innerHTML="Done! You have entered a valid password .";
+   return true;
+}else{
+let pass_err=document.getElementById("err_pass")
+pass_err.style.display = "block";
+pass_err.style.color = "red";
+pass_err.innerHTML="Please Sir enter a valid password .!";
+   return false;
+}
+
+
+},
+
+
+
+
     async  Reg_data(){
-     await axios.post('http://localhost:4040/api/admin',this.admin_register)
+
+if(this.validate_data()){
+  console.log('inside')
+     await axios.post('api/admin',this.admin_register)
         .then(()=>{
+         //without promise send request to the server for registration confirmation mail
+         axios.post('api/admin/confirm_mail',{
+          name:this.admin_register.name,
+          email:this.admin_register.email,
+          college:this.admin_register.college,
+        })
          //success alert
          alert('Your registration has been successfully done !');
          this.$router.push('/Admin_Login')
@@ -68,7 +153,11 @@ export default {
 //for reset input after submit
 const form = document.getElementById('form');
 form.reset();
+
+      }
     }
+
+
     }
 }
 </script>

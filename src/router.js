@@ -16,6 +16,8 @@ import AdminView from './components/admin/AdminView.vue'
 import AdminUpload from './components/admin/AdminUpload.vue'
 import AllotmentSetting from './components/admin/AllotmentSetting.vue'
 import AllotmentStart from './components/admin/AllotmentStart.vue'
+import GenerateReport from './components/admin/GenerateReport.vue'
+
 
 
 
@@ -25,7 +27,7 @@ export default [ {path:'/',component:HomeView,children:[
         {path:'Admin_Login',component:AdminLogin},
         {path:'Admin_registration',component:AdminRegister},
     ]},
-    {path:'/student',component:StudentCommon, children: [
+    {path:'/student/:uid',component:StudentCommon, children: [
         {path: '', component:StudentInfo,meta:{auth:true }}
     ]},
     {path:'/admin/:id',component:AdminView, children: [
@@ -33,7 +35,7 @@ export default [ {path:'/',component:HomeView,children:[
         {path: 'upload_data', component:AdminUpload ,meta:{adminauth:true }},
         {path: 'allotment_setting', component:AllotmentSetting,meta:{adminauth:true }},
         {path: 'allotment_start', component:AllotmentStart,meta:{adminauth:true }},
-
+        {path: 'generate_report', component:GenerateReport,meta:{adminauth:true }},
 
     ]}]
 

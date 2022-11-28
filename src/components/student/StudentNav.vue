@@ -9,7 +9,8 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-md-auto gap-2">
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/student"><i class="bi bi-house-fill me-2"></i>Student Dashboard</a>
+                    <router-link class="nav-link active" v-bind:to="home">Student Dashboard</router-link>
+                  
                   </li>
                   <li class="nav-item rounded">
                     <a class="nav-link active" aria-current="page" @click="logout"><i class="bi bi-house-fill me-2"></i>Logout</a>
@@ -24,9 +25,18 @@
 <script>
 export default {
     name:'StudentNav',
+    data(){
+    return{
+      home:`/student/${this.$route.params.uid}`,
+    }
+    },
     methods:{
   logout(){
     localStorage.removeItem("student_status");
+    localStorage.removeItem("student_name");
+    localStorage.removeItem("student_fathername");
+    localStorage.removeItem("student_room");
+    localStorage.removeItem("student_college");
     this.$router.push('/Student_login')
   }
 }

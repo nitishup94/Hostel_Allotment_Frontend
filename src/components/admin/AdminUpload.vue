@@ -17,7 +17,7 @@
         <div class="text-center" style="margin-top:75px;">
             <center>
              <div class="action" style="width:40%;">
-              <button class="action-button">Register Data</button>
+              <button class="action-btn">Register Data</button>
             
             </div></center>
           </div>
@@ -49,10 +49,12 @@ export default {
       this.items=rows;
        })
        
-      
+         const min = 1000;
+         const max = 100000;
+         var stop=false;
         for(let i=1; i<this.items.length;i++){
           
-          await axios.post(`http://localhost:4040/api/admin/student`,{
+          await axios.post(`api/admin/student`,{
             studentid:this.items[i][0],
             name:this.items[i][1],
             fathername: this.items[i][2],
@@ -60,18 +62,33 @@ export default {
             branch:this.items[i][4],
             date: this.items[i][5],
             collegeid:this.$route.params.id,
+            pass:Math.floor(Math.random() * (max - min + 1) + min)
           }
           )
-        .then(()=>{
-          // console.log("Student data inserted !")
-          if(this.items.length-1==i)
+        .then((res)=>{
+          console.log(res.data)
+          if(this.items.length-1==i){
+
           alert("Successfully  student data Saved")
-          
-        }).catch((err)=>{
-           console.log(err);
-           
+          //reset form
+          const form = document.getElementById('form');
+          form.reset();
+          }
         })
-         
+        .catch((err)=>{
+          const isDuplicate= err.response.data.errmsg.keyPattern.email;
+          stop=true;
+          if(isDuplicate){
+          alert('Email is already exists!')
+          
+          }else{
+          alert(err.message);
+          }
+        })
+      
+        if(stop)
+        break;
+       
         }
 
 
@@ -86,5 +103,18 @@ export default {
   margin-top: 5px;
   min-height:660px;
   border:2px solid black;
+}
+.action-btn{
+  font: inherit;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  padding: 1em;
+  width: 100%;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #166abe 40%,  #5095db  100%);
+ word-wrap: break-word;
+  border-radius: 6px;
+  color: #fff;
+  border: 0;
 }
 </style>

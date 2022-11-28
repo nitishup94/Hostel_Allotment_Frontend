@@ -28,7 +28,7 @@
         <div class="text-center" style="margin-top:75px;">
           <center>
            <div class="action" style="width:40%;">
-            <button class="action-button">Save</button>
+            <button class="action-btn">Save</button>
           </div></center>
         </div></form>
     </div>
@@ -57,7 +57,7 @@ export default {
           "Content-Type": "application/json",
         }, 
       };
-      await axios.get(`http://localhost:4040/api/admin/fetchsetting/${this.$route.params.id}`,adminconfig)
+      await axios.get(`api/admin/fetchsetting/${this.$route.params.id}`,adminconfig)
         .then((response)=>{
       
           this.norooms=response.data[0].rooms;
@@ -72,7 +72,7 @@ export default {
     methods:{
      async update(){
       
-       await axios.put(`http://localhost:4040/api/admin/updatesetting/${this.$route.params.id}`,{
+       await axios.put(`api/admin/updatesetting/${this.$route.params.id}`,{
         rooms:this.norooms,
         noofstudent: this.nostudent,
         pref:  this.pref
@@ -111,5 +111,18 @@ export default {
     background: #FFFACD;
     width: auto;
     padding: 5px 8px;
+}
+.action-btn{
+  font: inherit;
+  font-size: 1.25rem;
+  letter-spacing: 2px;
+  padding: 1em;
+  width: 100%;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #166abe 40%,  #5095db  100%);
+ word-wrap: break-word;
+  border-radius: 6px;
+  color: #fff;
+  border: 0;
 }
 </style>

@@ -22,11 +22,9 @@
                     <router-link class="nav-link" v-bind:to="allotment_start">Start Allotment</router-link>
                   </li>
                   <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill me-2"></i>Generate Report</a>
+                    <router-link class="nav-link" v-bind:to="generate_report">Generate Report</router-link>
                   </li>
-                  <li class="nav-item rounded">
-                    <a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-fill me-2"></i>Update Allotment</a>
-                  </li>
+                  
                   <li class="nav-item rounded">
                     <a class="nav-link active" aria-current="page" @click="logout"><i class="bi bi-house-fill me-2"></i>Logout</a>
                   </li>
@@ -46,6 +44,7 @@ export default {
         allotment_setting:`/admin/${this.$route.params.id}/allotment_setting`,
         upload_data:`/admin/${this.$route.params.id}/upload_data`,
         allotment_start:`/admin/${this.$route.params.id}/allotment_start`,
+        generate_report:`/admin/${this.$route.params.id}/generate_report`,
         
       }
     },
