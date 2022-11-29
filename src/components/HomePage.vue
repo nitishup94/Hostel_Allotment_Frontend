@@ -3,7 +3,7 @@
       <div class="jumbotron jumbotron-fluid bg-info text-white text-center">
         <div class="container">
           <h1 class="display-3">Hostel Allotment System</h1>
-          <p class="lead">Avoid to manual allotment.</p>
+          <p class="lead">Avoid manual allotment.</p>
         </div>
       </div>
 
@@ -28,7 +28,7 @@
               <div class="card-body">
                 <h3 class="card-title">Rooms</h3>
                 <p class="card-text">
-                 In one room single or more student alloted according to your need.
+                 One or more students can be alloted a single room as per your need.
                 </p>
               </div>
             </div>
@@ -39,7 +39,7 @@
               <div class="card-body">
                 <h3 class="card-title">Information</h3>
                 <p class="card-text">
-                  You can send allotment status mail with thier unique username and password to the students in single click.
+                  You can send the allotment status mail to the students with their unique username and password in one single click.
                 </p>
               </div>
             </div>
@@ -50,7 +50,7 @@
               <div class="card-body">
                 <h3 class="card-title">Preference</h3>
                 <p class="card-text">
-                  More preference features introduce in future for allotment.
+                  More preference will be introduced in future for allotment.
                 </p>
               </div>
             </div>

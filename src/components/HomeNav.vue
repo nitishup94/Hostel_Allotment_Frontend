@@ -21,7 +21,7 @@
                     <!-- <a class="nav-link" href="Admin_Login"><i class="bi bi-telephone-fill me-2"></i>Admin Login</a> -->
                   </li>
                   <li class="nav-item rounded">
-                    <router-link class="nav-link" to="Admin_registration">Admin Registeration</router-link>
+                    <router-link class="nav-link" to="Admin_registration">Admin Registration</router-link>
                     <!-- <a class="nav-link" href="Admin_registration"><i class="bi bi-telephone-fill me-2"></i>Admin Registeration</a> -->
                   </li>
                  

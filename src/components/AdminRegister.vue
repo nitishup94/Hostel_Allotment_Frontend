@@ -64,7 +64,7 @@ name_err.innerHTML="Done! You have entered a valid name.";
 let name_err=document.getElementById("err_name")
 name_err.style.display = "block";
 name_err.style.color = "red";
-name_err.innerHTML="Please Sir enter a valid name !";
+name_err.innerHTML="Please enter a valid name !";
    return false;
 }
 
@@ -81,7 +81,7 @@ email_err.innerHTML="Done! You have entered a valid email.";
 let email_err=document.getElementById("err_email")
 email_err.style.display = "block";
 email_err.style.color = "red";
-email_err.innerHTML="Please Sir enter a valid email !";
+email_err.innerHTML="Please enter a valid email !";
    return false;
 }
 
@@ -99,7 +99,7 @@ mobile_err.innerHTML="Done! You have entered a valid mobile no.";
 let mobile_err=document.getElementById("err_mobile")
 mobile_err.style.display = "block";
 mobile_err.style.color = "red";
-mobile_err.innerHTML="Please Sir enter a valid mobile no.!";
+mobile_err.innerHTML="Please enter a valid mobile no.!";
    return false;
 }
 
@@ -116,7 +116,7 @@ pass_err.innerHTML="Done! You have entered a valid password .";
 let pass_err=document.getElementById("err_pass")
 pass_err.style.display = "block";
 pass_err.style.color = "red";
-pass_err.innerHTML="Please Sir enter a valid password .!";
+pass_err.innerHTML="Please enter a valid password .!";
    return false;
 }
 
