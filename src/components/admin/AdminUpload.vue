@@ -65,7 +65,7 @@ export default {
             pass:Math.floor(Math.random() * (max - min + 1) + min)
           }
           )
-        .then((res)=>{
+        .then(()=>{
          
           if(this.items.length-1==i){
 
