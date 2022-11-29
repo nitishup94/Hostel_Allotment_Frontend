@@ -4,6 +4,7 @@ import StudentLogin from './components/StudentLogin.vue'
 import HomeView from './components/HomeView.vue'
 import AdminRegister from './components/AdminRegister.vue'
 import AdminLogin from './components/AdminLogin.vue'
+import PageNotfound from './components/PageNotfound.vue'
 
 //student directory
 import StudentInfo from './components/student/StudentInfo.vue'
@@ -37,7 +38,10 @@ export default [ {path:'/',component:HomeView,children:[
         {path: 'allotment_start', component:AllotmentStart,meta:{adminauth:true }},
         {path: 'generate_report', component:GenerateReport,meta:{adminauth:true }},
 
-    ]}]
+    ]},
+     { path: "*", component: PageNotfound }
+
+    ]
 
 
 
