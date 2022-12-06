@@ -32,11 +32,7 @@ export default {
     },
     methods:{
   logout(){
-    localStorage.removeItem("student_status");
-    localStorage.removeItem("student_name");
-    localStorage.removeItem("student_fathername");
-    localStorage.removeItem("student_room");
-    localStorage.removeItem("student_college");
+    localStorage.clear();
     this.$router.push('/Student_login')
   }
 }

@@ -50,7 +50,7 @@ export default {
     },
 methods:{
   logout(){
-    localStorage.removeItem("admin_status");
+    localStorage.clear();
     this.$router.push('/Admin_Login')
   }
 }

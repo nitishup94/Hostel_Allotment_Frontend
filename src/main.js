@@ -4,7 +4,7 @@ import routes from './router'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 //base url failed https://hostelallotment-api.onrender.com/
-//localhost api http://localhost:4040/ 
+//localhost api http://localhost:4040/
 
 axios.defaults.baseURL='https://hostel-allotment-api.onrender.com/'
 Vue.config.productionTip = false

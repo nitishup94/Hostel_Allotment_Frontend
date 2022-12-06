@@ -39,16 +39,14 @@ export default {
       } ,
     methods:{
      async Admin_login(){
-      const adminconfig = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-       await axios.get(`api/admin/login/${this.admin_reg_data.email}`,adminconfig)
+     
+       await axios.post(`api/admin/login`,{
+        email:this.admin_reg_data.email,
+        pass:this.admin_reg_data.password
+       })
         .then((response)=>{
           
           //password validate
-           if(response.data[0].password==this.admin_reg_data.password){
 
            console.log("logged in successfully!");
 
@@ -60,17 +58,9 @@ export default {
 
            //goto the dashboard
            this.$router.push('/admin/'+response.data[0]._id)
-           }else{
-
-            //for reset input after wrong attempt
-            const form = document.getElementById('form');
-            form.reset();
-            alert("Incorrect password !")
-           }
-
 
         }).catch((err)=>{
-          alert("Incorrect Email !");
+          alert("User not found !");
           const form = document.getElementById('form');
           form.reset();
           console.log(err)
