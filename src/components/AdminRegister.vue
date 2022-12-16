@@ -34,7 +34,8 @@
               <button class="action-button">Register</button>
             </div>
           </form>
-          
+          <br/>
+          <center><p>Note: Password must be greater or equal to 8 Character.[A-Z,a-z,0-9,symbol].   </p></center>
         </div>
       </div>
     </div>
