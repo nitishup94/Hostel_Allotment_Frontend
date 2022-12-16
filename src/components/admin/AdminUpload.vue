@@ -52,7 +52,11 @@ export default {
          const min = 1000;
          const max = 100000;
          var stop=false;
-        for(let i=1; i<this.items.length;i++){
+         //validate excel file is valid or not
+       if(this.items[0].length==6 && this.items[0][3]=="email"){
+       
+        //registration
+         for(let i=1; i<this.items.length;i++){
           
           await axios.post(`api/admin/student`,{
             studentid:this.items[i][0],
@@ -65,7 +69,7 @@ export default {
             pass:Math.floor(Math.random() * (max - min + 1) + min)
           }
           )
-        .then(()=>{
+         .then(()=>{
          
           if(this.items.length-1==i){
 
@@ -74,8 +78,8 @@ export default {
           const form = document.getElementById('form');
           form.reset();
           }
-        })
-        .catch((err)=>{
+         })
+         .catch((err)=>{
           const isDuplicate= err.response.data.errmsg.keyPattern.email;
           stop=true;
           if(isDuplicate){
@@ -84,11 +88,15 @@ export default {
           }else{
           alert(err.message);
           }
-        })
+         })
       
-        if(stop)
-        break;
+         if(stop)
+         break;
        
+         }
+        
+        }else{
+          alert('Invalid Excel format!')
         }
 
 
