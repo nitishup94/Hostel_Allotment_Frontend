@@ -7,12 +7,12 @@
         </div>
       </div>
 
-      <div class="container text-muted">
+      <div class="container-fluid content-row">
         <!-- Cards -->
         
          <div class="row">
-          <div class="col-md-6 col-lg-3">
-            <div class="card">
+          <div class="col-sm-12 col-lg-3">
+            <div class="card  h-100">
               <img class="card-img-top img-fluid" src="../assets/hostel.jpg" alt="" />
               <div class="card-body">
                 <h3 class="card-title">Hostels</h3>
@@ -22,8 +22,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="card">
+          <div class="col-sm-12 col-lg-3">
+            <div class="card  h-100">
               <img class="card-img-top img-fluid" src="../assets/rooms.jpg" alt="" />
               <div class="card-body">
                 <h3 class="card-title">Rooms</h3>
@@ -33,8 +33,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="card">
+          <div class="col-sm-12 col-lg-3">
+            <div class="card  h-100">
               <img class="card-img-top img-fluid" src="../assets/ctree.jpg" alt="" />
               <div class="card-body">
                 <h3 class="card-title">Information</h3>
@@ -44,8 +44,8 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="card">
+           <div class="col-sm-12 col-lg-3">
+            <div class="card  h-100">
               <img class="card-img-top img-fluid" src="../assets/upcomming.jpg" alt="" />
               <div class="card-body">
                 <h3 class="card-title">Preference</h3>

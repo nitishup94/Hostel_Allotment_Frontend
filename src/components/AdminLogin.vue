@@ -52,12 +52,12 @@ export default {
 
            //set login status and set value in localstorage for display data
            localStorage.setItem("admin_status",true);
-           localStorage.setItem("admin_name",response.data[0].name);
-           localStorage.setItem("admin_college",response.data[0].college);
+           localStorage.setItem("admin_name",response.data.name);
+           localStorage.setItem("admin_college",response.data.college);
            
 
            //goto the dashboard
-           this.$router.push('/admin/'+response.data[0]._id)
+           this.$router.push('/admin/'+response.data.aid)
 
         }).catch((err)=>{
           alert("User not found !");
